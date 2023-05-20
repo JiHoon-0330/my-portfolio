@@ -6,7 +6,8 @@ export async function middleware(req: NextRequest) {
   const token = req.cookies.get("token")?.value;
 
   if (!token && !url.pathname.startsWith("/auth")) {
-    return NextResponse.redirect("/auth");
+    url.pathname = "/auth";
+    return NextResponse.redirect(url);
   }
 
   return NextResponse.next();
