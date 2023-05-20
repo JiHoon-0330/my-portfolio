@@ -1,4 +1,4 @@
-import ClientRedirectAuth from "@/app/ClientRedirectAuth";
+import ClientRedirectAuth from "@/app/client-redirect-auth";
 import { fetchUser } from "@/lib/api/user";
 import { Inter } from "next/font/google";
 import "./globals.css";

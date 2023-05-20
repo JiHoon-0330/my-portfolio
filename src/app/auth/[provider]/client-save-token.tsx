@@ -22,5 +22,5 @@ export default function ClientSaveToken({ token }: Props) {
     replace("/");
   }, [token]);
 
-  return <div></div>;
+  return null;
 }

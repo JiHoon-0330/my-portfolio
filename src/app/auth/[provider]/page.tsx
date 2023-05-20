@@ -1,4 +1,4 @@
-import ClientSaveToken from "@/app/auth/[provider]/ClientSaveToken";
+import ClientSaveToken from "@/app/auth/[provider]/client-save-token";
 import { googleLogin } from "@/app/auth/[provider]/google";
 import { encrypt } from "@/lib/crypto";
 import { prisma } from "@/lib/db";
