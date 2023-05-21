@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextApiRequest } from "next";
 
 export type SearchResultItem = {
   /**
@@ -49,8 +49,8 @@ export type Search = {
   };
 };
 
-export async function search(req: NextRequest) {
-  const { search } = await req.json();
+export async function search(req: NextApiRequest) {
+  const { search } = JSON.parse(req.body);
 
   const resp = await fetch(
     `https://m.stock.naver.com/front-api/v1/search/autoComplete?query=${encodeURIComponent(

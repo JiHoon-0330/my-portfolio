@@ -1,4 +1,4 @@
-import GoogleButton from "./google-button";
+import GoogleButton from "@/component/google-button";
 
 export default function AuthPage() {
   return (

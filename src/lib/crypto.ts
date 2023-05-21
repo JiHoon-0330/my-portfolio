@@ -1,4 +1,4 @@
-import { Provider } from "@/app/auth/[provider]/page";
+import { Provider } from "@/pages/auth/[provider]";
 import CryptoJS from "crypto-js";
 import stringify from "fast-json-stable-stringify";
 

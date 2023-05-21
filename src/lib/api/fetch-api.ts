@@ -1,15 +1,21 @@
-async function getTokenByCookie() {
-  if (typeof window === "undefined") {
-    const { cookies } = await import("next/headers");
-    return cookies().get("token")?.value;
-  }
-  const { clientCookie } = await import("@/lib/cookie");
+// async function getTokenByCookie() {
+//   if (typeof window === "undefined") {
+//     const { cookies } = await import("next/headers");
+//     return cookies().get("token")?.value;
+//   }
+//   const { clientCookie } = await import("@/lib/cookie");
 
+import { clientCookie } from "@/lib/cookie";
+
+//   return clientCookie().get("token");
+// }
+
+function getTokenByCookie() {
   return clientCookie().get("token");
 }
 
 export async function http<T extends any>(...params: Parameters<typeof fetch>) {
-  const token = await getTokenByCookie();
+  const token = getTokenByCookie();
 
   const [url, options] = params;
 

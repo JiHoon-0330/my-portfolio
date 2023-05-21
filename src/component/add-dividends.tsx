@@ -40,7 +40,8 @@ export default function AddDividends({ revalidateAfterAction }: Props) {
           <form
             ref={form}
             className="flex-1 flex flex-col gap-4"
-            action={async () => {
+            onSubmit={async (e) => {
+              e.preventDefault();
               const result = await action(
                 "/api/portfolio/dividend",
                 stringify({ price }),

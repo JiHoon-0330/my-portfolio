@@ -1,6 +1,6 @@
 "use client";
 
-import { openBuyAndSellForm } from "@/app/(portfolio)/buy-and-sell-form";
+import { openBuyAndSellForm } from "@/component/buy-and-sell-form";
 import { percentFormat, priceFormat, quantityFormat } from "@/lib/price";
 import { Realtime } from "@/lib/server-api/naver/realtime";
 import { Item } from "@prisma/client";
@@ -22,7 +22,7 @@ export default function Item({ item, realtime }: Props) {
 
   return (
     <div>
-      <ListGroup className="flex  items-center py-2 px-4">
+      <ListGroup className="flex  items-center py-2 px-4 mb-5">
         <div className="flex-1">
           <div>
             <span>{item.name}</span>{" "}

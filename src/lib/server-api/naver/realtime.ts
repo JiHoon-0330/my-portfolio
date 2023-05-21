@@ -5,7 +5,7 @@ import { MarketStatus } from "@/lib/server-api/naver/naver.type";
 import { getEmailFromAuthorization } from "@/lib/server-api/user";
 import { Item } from "@prisma/client";
 import stringify from "fast-json-stable-stringify";
-import { NextRequest } from "next/server";
+import { NextApiRequest } from "next";
 
 export type RealtimeInfo = { realtimeTotalAmount: number; datas: Realtime[] };
 
@@ -45,7 +45,7 @@ type StockRealTime = {
     | [];
 };
 
-export async function realtime(req: NextRequest): Promise<RealtimeInfo> {
+export async function realtime(req: NextApiRequest): Promise<RealtimeInfo> {
   const email = getEmailFromAuthorization(req);
 
   const items = await prisma.item.findMany({

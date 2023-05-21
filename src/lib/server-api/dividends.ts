@@ -1,12 +1,12 @@
 import { prisma } from "@/lib/db";
 import { priceToNumber } from "@/lib/price";
 import { getEmailFromAuthorization } from "@/lib/server-api/user";
-import { NextRequest } from "next/server";
+import { NextApiRequest } from "next";
 
-export async function dividends(req: NextRequest) {
+export async function dividends(req: NextApiRequest) {
   const email = getEmailFromAuthorization(req);
 
-  const json: { price: string } = await req.json();
+  const json: { price: string } = JSON.parse(req.body);
 
   const price = priceToNumber(json.price);
 

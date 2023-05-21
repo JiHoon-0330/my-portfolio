@@ -110,7 +110,8 @@ export default function BuyAndSellForm({ revalidateAfterAction }: Props) {
           <form
             ref={form}
             className="flex-1 flex flex-col gap-4"
-            action={async () => {
+            onSubmit={async (e) => {
+              e.preventDefault();
               if (!item?.id) return;
 
               const result = await action(

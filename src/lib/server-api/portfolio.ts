@@ -2,7 +2,7 @@ import { prisma } from "@/lib/db";
 import { getPriceGep, priceToNumber } from "@/lib/price";
 import { getEmailFromAuthorization } from "@/lib/server-api/user";
 import { Item } from "@prisma/client";
-import { NextRequest } from "next/server";
+import { NextApiRequest } from "next";
 import z from "zod";
 
 const inputItemScheme = z.object({
@@ -36,10 +36,11 @@ export type InputItem = Omit<
   "id" | "createdAt" | "updatedAt" | "user" | "userEmail"
 >;
 
-export async function addStock(req: NextRequest) {
+export async function addStock(req: NextApiRequest) {
   const email = getEmailFromAuthorization(req);
 
-  const json = await req?.json();
+  const json = JSON.parse(req.body);
+  console.log({ email, json });
   const item = parseAddStock(json);
 
   if (!inputItemScheme.safeParse(item).success) {
@@ -88,8 +89,8 @@ function parseUpdateStock(
   };
 }
 
-export async function updateStock(req: NextRequest) {
-  const id = +(req.url.split("/").at(-1) ?? 0);
+export async function updateStock(req: NextApiRequest) {
+  const id = +(req.query.id as string);
 
   if (!id) {
     throw new Error("Invalid id");
@@ -97,7 +98,7 @@ export async function updateStock(req: NextRequest) {
 
   const email = getEmailFromAuthorization(req);
 
-  const json = await req?.json();
+  const json = JSON.parse(req.body);
   const item = parseUpdateStock({ ...json, id });
 
   if (!updateStockScheme.safeParse(item).success) {

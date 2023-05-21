@@ -1,13 +1,10 @@
-import { ProviderPageProps } from "@/app/auth/[provider]/page";
+import { ProviderPageQuery } from "@/pages/auth/[provider]";
 import { OAuth2Client } from "google-auth-library";
 
-export async function googleLogin({
-  params: { provider },
-  searchParams,
-}: ProviderPageProps) {
+export async function googleLogin(query: ProviderPageQuery) {
   const url = "https://www.googleapis.com/oauth2/v4/token";
   const body = new URLSearchParams({
-    ...searchParams,
+    ...query,
     redirect_uri: process.env.NEXT_PUBLIC_BASE_URL + "/auth/google",
     grant_type: "authorization_code",
     client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
@@ -66,5 +63,5 @@ export async function googleLogin({
     throw new Error("Email not verified");
   }
 
-  return { provider, email: payload?.email };
+  return { provider: query?.provider, email: payload?.email };
 }

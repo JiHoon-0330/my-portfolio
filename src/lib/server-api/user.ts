@@ -2,10 +2,10 @@ import { decrypt } from "@/lib/crypto";
 import { prisma } from "@/lib/db";
 import { getExchange } from "@/lib/server-api/naver/exchange";
 import { Dividends, Item, Sell, User } from "@prisma/client";
-import { NextRequest } from "next/server";
+import { NextApiRequest } from "next";
 
-export function getTokenByAuthorization(req: NextRequest) {
-  const token = req?.headers?.get("authorization")?.replace("Bearer ", "");
+export function getTokenByAuthorization(req: NextApiRequest) {
+  const token = req.headers.authorization?.replace("Bearer ", "");
 
   if (!token) {
     throw new Error("Token not found");
@@ -14,7 +14,7 @@ export function getTokenByAuthorization(req: NextRequest) {
   return token;
 }
 
-export function getEmailFromAuthorization(req: NextRequest) {
+export function getEmailFromAuthorization(req: NextApiRequest) {
   const token = getTokenByAuthorization(req);
   const { email } = decrypt(token);
 
@@ -31,9 +31,9 @@ export type UserInfo = User & {
   dividendsAmount: number;
 };
 
-export async function getUserInfo(req: NextRequest) {
+export async function getUserInfo(req: NextApiRequest) {
   const email = getEmailFromAuthorization(req);
-
+  console.log({ email });
   const user = await prisma.user.findUnique({
     where: {
       email,

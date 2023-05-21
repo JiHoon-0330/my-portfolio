@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+}
+
+html {
+  background-color: rgb(241 245 249);
+}
+
+body {
+  width: 800px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 50px 30px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
