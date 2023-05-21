@@ -33,6 +33,8 @@ export async function googleLogin({
 
   const client = new OAuth2Client(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID);
 
+  console.log({ json });
+
   const ticket = await client?.verifyIdToken({
     idToken: json?.id_token,
     audience: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
