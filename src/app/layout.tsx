@@ -1,6 +1,6 @@
-import ClientRedirectAuth from "@/app/client-redirect-auth";
-import { fetchUser } from "@/lib/api/user";
+import ToastContainer from "@/app/toast-container";
 import { Inter } from "next/font/google";
+import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -15,13 +15,15 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const user = await fetchUser();
-
   return (
-    <html lang="ko">
+    <html lang="ko" className="bg-slate-100">
       <script src="https://accounts.google.com/gsi/client" async defer />
-      <body className={inter.className}>{children}</body>
-      <ClientRedirectAuth user={user} />
+      <body
+        className={`${inter.className} w-[800px] min-h-screen m-auto bg-white flex flex-col px-[30px] py-[50px]`}
+      >
+        {children}
+        <ToastContainer />
+      </body>
     </html>
   );
 }

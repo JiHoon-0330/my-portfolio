@@ -7,5 +7,6 @@ namespace NodeJS {
     NEXT_PUBLIC_SHA_KEY: string;
     NEXT_PUBLIC_GOOGLE_CLIENT_ID: string;
     NEXT_PUBLIC_GOOGLE_CLIENT_SECRET: string;
+    NEXT_PUBLIC_BASE_URL: string;
   }
 }

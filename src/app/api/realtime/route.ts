@@ -1,9 +1,9 @@
+import { realtime } from "@/lib/server-api/naver/realtime";
 import { response } from "@/lib/server-api/response";
-import { getUserInfo } from "@/lib/server-api/user";
 import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
-  return await response(() => {
-    return getUserInfo(req);
+  return await response(async () => {
+    return await realtime(req);
   });
 }

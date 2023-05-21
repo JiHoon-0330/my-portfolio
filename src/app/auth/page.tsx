@@ -1,4 +1,4 @@
-import Google from "@/app/auth/Google";
+import Google from "@/app/auth/google";
 
 export default function AuthPage() {
   return (

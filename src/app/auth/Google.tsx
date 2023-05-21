@@ -7,7 +7,7 @@ export default function Google() {
       ux_mode: "redirect",
       scope:
         "profile email openid https://www.googleapis.com/auth/userinfo.profile",
-      redirect_uri: "http://localhost:3000/auth/google",
+      redirect_uri: process.env.NEXT_PUBLIC_BASE_URL + "/auth/google",
     });
     gOauth2Client.requestCode();
   }

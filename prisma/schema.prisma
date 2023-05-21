@@ -11,8 +11,57 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
+  id        Int         @id @default(autoincrement())
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  email     String      @unique
   provider  String
+  items     Item[]
+  sells     Sell[]
+  dividends Dividends[]
+}
+
+model Item {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userEmail], references: [email])
+  userEmail   String
+  code        String
+  name        String
+  typeCode    String
+  typeName    String
+  url         String
+  reutersCode String
+  nationCode  String?
+  nationName  String?
+  buyPrice    Float
+  quantity    Float
+}
+
+model Sell {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userEmail], references: [email])
+  userEmail   String
+  code        String
+  name        String
+  typeCode    String
+  typeName    String
+  url         String
+  reutersCode String
+  nationCode  String?
+  nationName  String?
+  sellPrice   Float
+  quantity    Float
+}
+
+model Dividends {
+  id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userEmail], references: [email])
+  userEmail String
+  price     Float
 }
