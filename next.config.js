@@ -1,7 +1,7 @@
 require("dotenv/config");
 
 const isProd = process.env.PROD === "true";
-
+console.log({ isProd });
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {

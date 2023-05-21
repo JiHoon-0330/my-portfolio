@@ -21,6 +21,4 @@ jobs:
           script: |
             cd my-portfolio
             git pull
-            pnpm install
-            pnpm build
-            pnpm pm2:reload
+            sh deploy.sh
