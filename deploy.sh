@@ -1,5 +1,5 @@
 cd my-portfolio
 git pull
-pnpm install
-PROD=true pnpm build
-pnpm pm2:reload
+yarn install
+PROD=true yarn build
+yarn pm2:reload
