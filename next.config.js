@@ -12,6 +12,9 @@ const nextConfig = {
       ? process.env.NEXT_PUBLIC_BASE_URL_SERVER
       : process.env.NEXT_PUBLIC_BASE_URL_LOCAL,
   },
+  compiler: {
+    removeConsole: false,
+  },
 };
 
 module.exports = nextConfig;
