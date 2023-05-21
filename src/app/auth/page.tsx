@@ -1,3 +1,4 @@
+// @ts-ignore
 import Google from "./google";
 
 export default function AuthPage() {
