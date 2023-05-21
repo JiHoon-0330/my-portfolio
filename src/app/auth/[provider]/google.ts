@@ -14,6 +14,11 @@ export async function googleLogin({
     client_secret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET,
   })?.toString();
 
+  console.log({
+    url,
+    body,
+  });
+
   const resp = await fetch(url, {
     method: "POST",
     headers: {
@@ -31,9 +36,9 @@ export async function googleLogin({
     id_token: string;
   };
 
-  const client = new OAuth2Client(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID);
+  console.log(json);
 
-  console.log({ json });
+  const client = new OAuth2Client(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID);
 
   const ticket = await client?.verifyIdToken({
     idToken: json?.id_token,
