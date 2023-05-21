@@ -33,12 +33,12 @@ export async function googleLogin({
 
   const client = new OAuth2Client(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID);
 
-  const ticket = await client.verifyIdToken({
+  const ticket = await client?.verifyIdToken({
     idToken: json?.id_token,
     audience: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
   });
 
-  const payload = ticket.getPayload() as {
+  const payload = ticket?.getPayload() as {
     iss: string;
     azp: string;
     aud: string;
