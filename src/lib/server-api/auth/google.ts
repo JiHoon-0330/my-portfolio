@@ -5,6 +5,7 @@ export async function googleLogin(query: ProviderPageQuery) {
   const url = "https://www.googleapis.com/oauth2/v4/token";
   const body = new URLSearchParams({
     ...query,
+    scope: encodeURIComponent(query.scope),
     redirect_uri: process.env.NEXT_PUBLIC_BASE_URL + "/auth/google",
     grant_type: "authorization_code",
     client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
