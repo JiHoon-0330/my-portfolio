@@ -1,10 +1,9 @@
-// @ts-ignore
-import Google from "./google";
+import GoogleButton from "./google-button";
 
 export default function AuthPage() {
   return (
     <div>
-      <Google />
+      <GoogleButton />
     </div>
   );
 }

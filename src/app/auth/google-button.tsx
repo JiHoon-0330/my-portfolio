@@ -1,6 +1,8 @@
 "use client";
 
-export default function Google() {
+import { Button } from "flowbite-react";
+
+export default function GoogleButton() {
   function onClick() {
     const gOauth2Client = window.google.accounts.oauth2.initCodeClient({
       client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
@@ -12,5 +14,5 @@ export default function Google() {
     gOauth2Client.requestCode();
   }
 
-  return <button onClick={onClick}>구글로그인</button>;
+  return <Button onClick={onClick}>구글로그인</Button>;
 }
