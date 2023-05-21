@@ -1,0 +1,26 @@
+name: production-deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: executing remote ssh commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.IP}}
+          username: ${{secrets.ID}}
+          key: ${{secrets.KEY}}
+          port: ${{secrets.PORT}}
+          script: |
+            cd my-portfolio
+            git pull
+            pnpm install
+            pnpm build
+            pnpm pm2:reload
