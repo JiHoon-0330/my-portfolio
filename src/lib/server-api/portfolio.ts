@@ -167,7 +167,9 @@ export async function updateStock(req: NextApiRequest) {
         url: item.url,
         nationCode: item.nationCode,
         nationName: item.nationName,
-        sellPrice: getPriceGep(dbItem.buyPrice, item.price),
+        sellPrice: item.price,
+        buyPrice: dbItem.buyPrice,
+        priceGap: getPriceGep(dbItem.buyPrice, item.price),
         userEmail: email,
       },
     });

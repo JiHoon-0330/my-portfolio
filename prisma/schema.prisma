@@ -54,6 +54,8 @@ model Sell {
   nationCode  String?
   nationName  String?
   sellPrice   Float
+  buyPrice    Float
+  priceGap    Float
   quantity    Float
 }
 
